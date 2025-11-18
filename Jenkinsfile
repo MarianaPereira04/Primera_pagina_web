@@ -20,7 +20,7 @@ pipeline {
         stage('Compilar backend') {
             steps {
                 dir('Proyecto Backend/grupo2-backend') {
-                    sh 'npm run build'
+                    sh 'npm run start:dev'
                 }
             }
         }

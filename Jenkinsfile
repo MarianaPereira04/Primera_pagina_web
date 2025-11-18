@@ -4,12 +4,11 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Descarga el código del repo (igual a lo que ya viste)
                 checkout scm
             }
         }
 
-        stage('Instalar dependencias backend') {
+        stage('Instalar dependencias') {
             steps {
                 dir('Proyecto Backend/grupo2-backend') {
                     sh 'npm install'
@@ -17,18 +16,18 @@ pipeline {
             }
         }
 
-        stage('Compilar backend') {
+        stage('Compilar') {
             steps {
                 dir('Proyecto Backend/grupo2-backend') {
-                    sh 'npm run start:dev'
+                    sh 'npm run build'
                 }
             }
         }
 
-        stage('Pruebas backend') {
+        stage('Pruebas') {
             steps {
                 dir('Proyecto Backend/grupo2-backend') {
-                    sh 'npm test || echo "No hay tests configurados"'
+                    sh 'npm test || echo "no tests"'
                 }
             }
         }

@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -11,7 +15,7 @@ pipeline {
         stage('Instalar dependencias') {
             steps {
                 dir('Proyecto Backend/grupo2-backend') {
-                    sh '/opt/homebrew/bin/npm install'
+                    sh 'npm install'
                 }
             }
         }
@@ -19,7 +23,7 @@ pipeline {
         stage('Compilar') {
             steps {
                 dir('Proyecto Backend/grupo2-backend') {
-                    sh '/opt/homebrew/bin/npm run build'
+                    sh 'npm run build'
                 }
             }
         }
@@ -27,7 +31,7 @@ pipeline {
         stage('Pruebas') {
             steps {
                 dir('Proyecto Backend/grupo2-backend') {
-                    sh '/opt/homebrew/bin/npm test || echo "No hay tests configurados"'
+                    sh 'npm test || echo "No hay tests configurados"'
                 }
             }
         }

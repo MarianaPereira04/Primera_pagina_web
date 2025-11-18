@@ -11,7 +11,7 @@ pipeline {
         stage('Instalar dependencias') {
             steps {
                 dir('Proyecto Backend/grupo2-backend') {
-                    sh 'npm install'
+                    sh '/opt/homebrew/bin/npm install'
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline {
         stage('Compilar') {
             steps {
                 dir('Proyecto Backend/grupo2-backend') {
-                    sh 'npm run build'
+                    sh '/opt/homebrew/bin/npm run build'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Pruebas') {
             steps {
                 dir('Proyecto Backend/grupo2-backend') {
-                    sh 'npm test || echo "no tests"'
+                    sh '/opt/homebrew/bin/npm test || echo "No hay tests configurados"'
                 }
             }
         }

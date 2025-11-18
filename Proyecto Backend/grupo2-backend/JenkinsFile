@@ -2,21 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Hola') {
             steps {
-                echo 'Código descargado desde GitHub'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Aquí iría el build de la página (si existiera)'
-            }
-        }
-
-        stage('Pruebas') {
-            steps {
-                echo 'Aquí se podrían ejecutar pruebas automatizadas'
+                echo 'Mi primer pipeline en Jenkins funciona 🎉'
             }
         }
     }

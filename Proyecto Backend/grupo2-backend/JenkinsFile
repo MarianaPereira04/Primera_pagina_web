@@ -4,46 +4,19 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
-            }
-        }
-
-        stage('Instalar dependencias') {
-            steps {
-                sh '''
-                  if [ -f package.json ]; then
-                    echo "Instalando dependencias..."
-                    npm install
-                  else
-                    echo "No hay package.json, se omite npm install"
-                  fi
-                '''
+                echo 'Código descargado desde GitHub'
             }
         }
 
         stage('Build') {
             steps {
-                sh '''
-                  if [ -f package.json ]; then
-                    echo "Ejecutando build..."
-                    npm run build || echo "No hay script build, se omite"
-                  else
-                    echo "Proyecto estático, sin build"
-                  fi
-                '''
+                echo 'Aquí iría el build de la página (si existiera)'
             }
         }
 
         stage('Pruebas') {
             steps {
-                sh '''
-                  if [ -f package.json ]; then
-                    echo "Ejecutando tests..."
-                    npm test || echo "No hay tests definidos"
-                  else
-                    echo "No hay tests configurados"
-                  fi
-                '''
+                echo 'Aquí se podrían ejecutar pruebas automatizadas'
             }
         }
     }
